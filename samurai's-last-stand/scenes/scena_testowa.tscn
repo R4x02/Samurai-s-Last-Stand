@@ -1,0 +1,272 @@
+[gd_scene load_steps=27 format=3 uid="uid://dxdwcta0a6scw"]
+
+[ext_resource type="PackedScene" uid="uid://qqyqmr3uclu0" path="res://characters/samurai.tscn" id="1_4cnu4"]
+[ext_resource type="PackedScene" uid="uid://bidpsxbq23a8j" path="res://characters/postac_testowa.tscn" id="1_bbq1h"]
+[ext_resource type="Texture2D" uid="uid://bgs2fm02x66h6" path="res://pixil-frame-0_13.png" id="1_x7lk4"]
+[ext_resource type="AudioStream" uid="uid://c3irmx44175vd" path="res://sounds/kick-hard-8-bit-103746.mp3" id="2_4hhqg"]
+[ext_resource type="PackedScene" uid="uid://bcof8lnujcyxv" path="res://characters/wrog_testowy.tscn" id="2_8m7jl"]
+[ext_resource type="AudioStream" uid="uid://hnccwdef0g6c" path="res://sounds/retro-hurt-1-236672.mp3" id="3_cuytn"]
+[ext_resource type="Script" path="res://scripts/wrog_testowy.gd" id="3_nd312"]
+[ext_resource type="Script" path="res://scripts/orb.gd" id="4_l3jq4"]
+[ext_resource type="AudioStream" uid="uid://bv26mqpy7pytp" path="res://sounds/retro-jump-1-236684.mp3" id="4_vlq6s"]
+[ext_resource type="Texture2D" uid="uid://nnh4sptatn8f" path="res://characters/powerup.png" id="4_xikt6"]
+[ext_resource type="Texture2D" uid="uid://beqo1cqsa76af" path="res://platform.png" id="6_hqxa5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ygt47"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir7sw"]
+size = Vector2(20, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tyd5f"]
+size = Vector2(90, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t4pd"]
+size = Vector2(66, 129)
+
+[sub_resource type="QuadMesh" id="QuadMesh_qri2w"]
+size = Vector2(1000, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuqjn"]
+size = Vector2(1149, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syw1l"]
+size = Vector2(90, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldlj1"]
+size = Vector2(68, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kgjg"]
+atlas = ExtResource("4_xikt6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kkr1"]
+atlas = ExtResource("4_xikt6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vd3va"]
+atlas = ExtResource("4_xikt6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rk1bn"]
+atlas = ExtResource("4_xikt6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ybeb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kgjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kkr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vd3va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rk1bn")
+}],
+"loop": true,
+"name": &"orb",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yw4q"]
+size = Vector2(10575, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjpg4"]
+size = Vector2(438, 2673)
+
+[node name="scena_testowa" type="Node2D"]
+position = Vector2(-9, -60)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2015, -145.82)
+scale = Vector2(8.8501, 10.6321)
+texture = ExtResource("1_x7lk4")
+
+[node name="Block" type="StaticBody2D" parent="."]
+position = Vector2(1237, 403)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Block"]
+modulate = Color(0.564706, 0.733333, 0.803922, 1)
+position = Vector2(-1.90735e-06, 7.25)
+scale = Vector2(20, 15.5)
+mesh = SubResource("BoxMesh_ygt47")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_ir7sw")
+
+[node name="Block2" type="StaticBody2D" parent="."]
+position = Vector2(2209, 403)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Block2"]
+modulate = Color(0.564706, 0.733333, 0.803922, 1)
+position = Vector2(-1.90735e-06, 7.25)
+scale = Vector2(20, 15.5)
+mesh = SubResource("BoxMesh_ygt47")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_ir7sw")
+
+[node name="PostacTestowa" parent="." instance=ExtResource("1_bbq1h")]
+position = Vector2(-927, 40)
+
+[node name="Kick-hard" type="AudioStreamPlayer" parent="PostacTestowa"]
+stream = ExtResource("2_4hhqg")
+volume_db = -10.0
+
+[node name="Retro-hurt" type="AudioStreamPlayer" parent="PostacTestowa"]
+stream = ExtResource("3_cuytn")
+volume_db = -10.0
+
+[node name="Retro-jump" type="AudioStreamPlayer" parent="PostacTestowa"]
+stream = ExtResource("4_vlq6s")
+volume_db = -10.0
+
+[node name="Area_postaci" type="Area2D" parent="PostacTestowa"]
+
+[node name="hitbox_postaci" type="CollisionShape2D" parent="PostacTestowa/Area_postaci"]
+position = Vector2(0, -64)
+shape = SubResource("RectangleShape2D_tyd5f")
+
+[node name="AttackArea" type="Area2D" parent="PostacTestowa"]
+
+[node name="CollisionShapeLeft" type="CollisionShape2D" parent="PostacTestowa/AttackArea"]
+position = Vector2(-78, -64)
+shape = SubResource("RectangleShape2D_2t4pd")
+
+[node name="CollisionShapeRight" type="CollisionShape2D" parent="PostacTestowa/AttackArea"]
+position = Vector2(78, -64)
+shape = SubResource("RectangleShape2D_2t4pd")
+
+[node name="platforma_testowa" type="StaticBody2D" parent="."]
+position = Vector2(539, 569)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="platforma_testowa"]
+modulate = Color(0.564706, 0.733333, 0.803922, 1)
+position = Vector2(46.0007, 465.59)
+rotation = 3.14159
+scale = Vector2(1.152, 8.53179)
+mesh = SubResource("QuadMesh_qri2w")
+texture = ExtResource("6_hqxa5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforma_testowa"]
+position = Vector2(46, 89)
+shape = SubResource("RectangleShape2D_fuqjn")
+debug_color = Color(0.564706, 0.733333, 0.803922, 1)
+
+[node name="platforma_testowa4" type="StaticBody2D" parent="."]
+position = Vector2(-1226, -16)
+rotation = -1.57079
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="platforma_testowa4"]
+modulate = Color(0.564706, 0.733333, 0.803922, 0)
+position = Vector2(46, 89)
+scale = Vector2(1.152, 1)
+mesh = SubResource("QuadMesh_qri2w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforma_testowa4"]
+position = Vector2(46, 89)
+shape = SubResource("RectangleShape2D_fuqjn")
+debug_color = Color(0.564706, 0.733333, 0.803922, 0)
+
+[node name="platforma_testowa2" type="StaticBody2D" parent="."]
+position = Vector2(1600, 379)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="platforma_testowa2"]
+modulate = Color(0.564706, 0.733333, 0.803922, 1)
+position = Vector2(131.976, 559.307)
+rotation = 3.14159
+scale = Vector2(1.16236, 10.4061)
+mesh = SubResource("QuadMesh_qri2w")
+texture = ExtResource("6_hqxa5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforma_testowa2"]
+position = Vector2(134, 93)
+shape = SubResource("RectangleShape2D_fuqjn")
+debug_color = Color(0.564706, 0.733333, 0.803922, 1)
+
+[node name="platforma_testowa3" type="StaticBody2D" parent="."]
+position = Vector2(-614, 377)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="platforma_testowa3"]
+modulate = Color(0.564706, 0.733333, 0.803922, 1)
+position = Vector2(46, 563.633)
+rotation = 3.14159
+scale = Vector2(1.152, 10.4927)
+mesh = SubResource("QuadMesh_qri2w")
+texture = ExtResource("6_hqxa5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforma_testowa3"]
+position = Vector2(46, 89)
+shape = SubResource("RectangleShape2D_fuqjn")
+debug_color = Color(0.564706, 0.733333, 0.803922, 1)
+
+[node name="wrog_testowy" parent="." instance=ExtResource("2_8m7jl")]
+position = Vector2(931, 659)
+script = ExtResource("3_nd312")
+
+[node name="hitbox2" type="Area2D" parent="wrog_testowy"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="wrog_testowy/hitbox2"]
+position = Vector2(-16, -120)
+shape = SubResource("RectangleShape2D_syw1l")
+
+[node name="wrog_testowy2" parent="." instance=ExtResource("2_8m7jl")]
+position = Vector2(161, 658)
+script = ExtResource("3_nd312")
+
+[node name="hitbox2" type="Area2D" parent="wrog_testowy2"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="wrog_testowy2/hitbox2"]
+position = Vector2(-16, -120)
+shape = SubResource("RectangleShape2D_syw1l")
+
+[node name="Samurai" parent="." instance=ExtResource("1_4cnu4")]
+position = Vector2(1627, 468)
+
+[node name="hitbox3" type="Area2D" parent="Samurai"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Samurai/hitbox3"]
+position = Vector2(-16, -120)
+shape = SubResource("RectangleShape2D_syw1l")
+
+[node name="orb" type="Area2D" parent="."]
+position = Vector2(1543, 264)
+script = ExtResource("4_l3jq4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="orb"]
+position = Vector2(-188, -63)
+shape = SubResource("RectangleShape2D_ldlj1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="orb"]
+position = Vector2(-188, -65)
+scale = Vector2(4.84375, 4.08594)
+sprite_frames = SubResource("SpriteFrames_8ybeb")
+animation = &"orb"
+autoplay = "orb"
+frame_progress = 0.297077
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(930.5, 955)
+shape = SubResource("RectangleShape2D_1yw4q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-2284, -160)
+shape = SubResource("RectangleShape2D_cjpg4")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6434, -217)
+shape = SubResource("RectangleShape2D_cjpg4")
+
+[connection signal="body_entered" from="wrog_testowy/hitbox2" to="PostacTestowa" method="_on_hitbox_2_body_entered"]
+[connection signal="body_entered" from="wrog_testowy2/hitbox2" to="PostacTestowa" method="_on_hitbox_2_body_entered"]
+[connection signal="body_entered" from="Samurai/hitbox3" to="PostacTestowa" method="_on_hitbox_3_body_entered"]
+[connection signal="body_entered" from="orb" to="PostacTestowa" method="_on_orb_body_entered"]
+[connection signal="body_entered" from="orb" to="orb" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="PostacTestowa" method="_on_area_2d_body_entered"]
