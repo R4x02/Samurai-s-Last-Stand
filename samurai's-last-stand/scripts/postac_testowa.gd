@@ -5,12 +5,10 @@ extends CharacterBody2D
 @export var jump_force = 700
 @export var dash_speed = 1000
 @export var dash_duration = 0.3
-@export var attack_damage = 10
-@export var zombie_damage = 10
-@export var samurai_damage = 20  # Obrażenia zadawane przeciwnikom
+@export var attack_damage = 20  # Obrażenia zadawane przeciwnikom
 @export var can_double_jump = false  # Czy podwójny skok jest aktywny
 @export var max_health = 100  # Maksymalne zdrowie bohatera
-@export var health = 50 # Aktualne zdrowie bohatera
+@export var health = 30 # Aktualne zdrowie bohatera
 @onready var attack_area = get_node("AttackArea")
 
 var has_double_jumped = false  # Czy podwójny skok już został wykonany
@@ -32,15 +30,6 @@ func _ready():
 		attack_area.connect("body_entered", Callable(self, "_on_AttackArea_body_entered"))
 
 func _physics_process(delta):
-	if health == 40:
-		$Camera2D/AnimatedSprite2D.play("serce_4")
-	if health == 30:
-		$Camera2D/AnimatedSprite2D.play("serce_3")
-	if health == 20:
-		$Camera2D/AnimatedSprite2D.play("serce_2")
-	if health == 10:
-		$Camera2D/AnimatedSprite2D.play("serce_1")
-	
 	# Jeśli bohater jest martwy, zatrzymaj dalsze przetwarzanie
 	if is_dead:
 		return
@@ -129,6 +118,7 @@ func _physics_process(delta):
 
 	# Move character and apply velocity
 	move_and_slide()
+
 # Start dash function
 func start_dash(direction):
 	is_dashing = true
@@ -195,7 +185,6 @@ func take_damage_p(damage: int) -> void:
 	$"Retro-hurt".play()
 # Funkcja obsługująca śmierć bohatera
 func die() -> void:
-	$Camera2D/AnimatedSprite2D.play("serce_0")
 	$"Retro-hurt".play()
 	is_dead = true
 	print("Bohater umarł")
@@ -207,12 +196,7 @@ func _on_orb_body_entered(body: Node) -> void:
 
 func _on_hitbox_2_body_entered(body: CharacterBody2D) -> void:  # This will help you identify the body causing the trigger
 	if body.has_method("take_damage_p"):
-		body.take_damage_p(zombie_damage)
-		print(health)
-
-func _on_hitbox_3_body_entered(body: CharacterBody2D) -> void:  # This will help you identify the body causing the trigger
-	if body.has_method("take_damage_p"):
-		body.take_damage_p(samurai_damage)
+		body.take_damage_p(attack_damage)
 		print(health)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

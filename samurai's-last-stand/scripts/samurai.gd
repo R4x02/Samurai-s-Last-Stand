@@ -56,11 +56,11 @@ func die() -> void:
 	$AnimatedSprite2D.hide()
 	$AnimatedSprite2D2.show()
 	if direction == -1:
-		$hitbox3.queue_free()
+		$hitbox2.queue_free()
 		$EnemyCollision.queue_free()
 		$AnimatedSprite2D2.play("samurai_dead_left")
 	else:
-		$hitbox3.queue_free()
+		$hitbox2.queue_free()
 		$EnemyCollision.queue_free()
 		$AnimatedSprite2D2.play("samurai_dead_right")
 

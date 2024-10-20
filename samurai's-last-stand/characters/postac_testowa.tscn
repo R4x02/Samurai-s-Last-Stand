@@ -1,16 +1,10 @@
-[gd_scene load_steps=59 format=3 uid="uid://bidpsxbq23a8j"]
+[gd_scene load_steps=52 format=3 uid="uid://bidpsxbq23a8j"]
 
 [ext_resource type="Script" path="res://scripts/postac_testowa.gd" id="1_0mrbv"]
 [ext_resource type="AudioStream" uid="uid://bbbqk3cjik34u" path="res://sounds/8bitJapanese-Rock.mp3" id="2_1gt2k"]
 [ext_resource type="Texture2D" uid="uid://rmvbkqagcngi" path="res://characters/run_right.png" id="2_afq0v"]
 [ext_resource type="Texture2D" uid="uid://bpu545ghulv6b" path="res://characters/new_attack_l.png" id="2_e6046"]
-[ext_resource type="Texture2D" uid="uid://duljq5yuxq6mh" path="res://characters/serce_5.png" id="3_2udkx"]
-[ext_resource type="Texture2D" uid="uid://t7iwl2wvx853" path="res://characters/serce_1.png" id="3_sku0u"]
-[ext_resource type="Texture2D" uid="uid://dx324eehi2vos" path="res://characters/serce_0.png" id="3_x8fdj"]
 [ext_resource type="Texture2D" uid="uid://cydebhfd5p02u" path="res://characters/new_attack_r.png" id="3_y5mx8"]
-[ext_resource type="Texture2D" uid="uid://iomg3f8nkt57" path="res://characters/serce_2.png" id="4_h8q8u"]
-[ext_resource type="Texture2D" uid="uid://cjm8spk8vh2ig" path="res://characters/serce_3.png" id="5_a3u68"]
-[ext_resource type="Texture2D" uid="uid://bwv1ookvn3c16" path="res://characters/serce_4.png" id="6_6y2d8"]
 [ext_resource type="Texture2D" uid="uid://bh5ybahlysj26" path="res://characters/dash_left.png" id="7_i0fkm"]
 [ext_resource type="Texture2D" uid="uid://bucto32bmvrkl" path="res://characters/player_idle_left.png" id="7_ylej8"]
 [ext_resource type="Texture2D" uid="uid://dfduecppbda14" path="res://characters/player-idle.png" id="8_mwcmv"]
@@ -20,57 +14,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlvjo"]
 size = Vector2(90, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_pjwq7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_x8fdj")
-}],
-"loop": true,
-"name": &"serce_0",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_sku0u")
-}],
-"loop": true,
-"name": &"serce_1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_h8q8u")
-}],
-"loop": true,
-"name": &"serce_2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_a3u68")
-}],
-"loop": true,
-"name": &"serce_3",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_6y2d8")
-}],
-"loop": true,
-"name": &"serce_4",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_2udkx")
-}],
-"loop": true,
-"name": &"serce_5",
-"speed": 5.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yy3ym"]
 atlas = ExtResource("2_e6046")
@@ -397,12 +340,6 @@ zoom = Vector2(0.7, 0.7)
 stream = ExtResource("2_1gt2k")
 volume_db = -25.0
 autoplay = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Camera2D"]
-position = Vector2(-579.25, -360.5)
-scale = Vector2(10.1771, 12.5625)
-sprite_frames = SubResource("SpriteFrames_pjwq7")
-animation = &"serce_5"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1.78814e-07, -64)
